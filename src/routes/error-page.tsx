@@ -1,14 +1,22 @@
 import { useRouteError } from "react-router-dom";
+import styled from 'styled-components';
+
+const ErrorDiv = styled.div`
+  display: grid;
+  justify-content: center;
+  align-content: center;
+  height: 100% !important;
+`;
 
 const ErrorPage = () => {
   const error: any = useRouteError()
 
-  return <div>
+  return <ErrorDiv>
     <h1>Sorry, an unexpected error has occurred</h1>
     <p>
-      <i>{error?.statusText || error?.message}</i>
+      Error message: <i>{error?.statusText || error?.message}</i>
     </p>
-  </div>
+  </ErrorDiv>
 }
 
 export default ErrorPage;
