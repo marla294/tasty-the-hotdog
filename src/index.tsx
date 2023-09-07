@@ -7,12 +7,19 @@ import {
 } from "react-router-dom";
 import Root from './routes/root';
 import ErrorPage from './routes/error-page';
+import About from './routes/about';
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Root />,
-    errorElement: <ErrorPage />
+    errorElement: <ErrorPage />,
+    children: [
+      {
+        path: "about",
+        element: <About />
+      }
+    ]
   },
 ]);
 
