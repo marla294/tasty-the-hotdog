@@ -1,6 +1,10 @@
+import Header from "../components/Header";
 
 const Root = () => {
-  return <>Root Route</>
+  return <>
+    <Header />
+    Root Route
+  </>
 }
 
 export default Root;
