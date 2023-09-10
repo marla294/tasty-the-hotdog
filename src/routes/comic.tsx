@@ -1,5 +1,4 @@
 import { useLoaderData } from 'react-router-dom';
-// import comic from '../assets/09082023.jpeg';
 import styled from 'styled-components';
 
 const ComicMap = {'09082023': '09082023.jpeg', '09092023': '09092023.jpg'};
