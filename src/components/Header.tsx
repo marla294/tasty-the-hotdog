@@ -6,14 +6,17 @@ const HeaderContainer = styled.div`
   height: 5rem;
   background-color: coral;
   display: grid;
-  align-content: center;
+  grid-template-columns: 1fr 5fr 1fr;
+  align-items: center;
+  justify-items: center;
 `;
 
 
 const Header = () => {
   return <HeaderContainer>
-    <Link to={'/comic/09092023'}>Next</Link>
+    <Link to={'/comic/09082023'}>Prev</Link>
     <h1>Tasty the Hotdog</h1>
+    <Link to={'/comic/09092023'}>Next</Link>
   </HeaderContainer>
 }
 
