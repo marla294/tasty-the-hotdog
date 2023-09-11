@@ -16,7 +16,21 @@ const StyledComic = styled.img`
 
 export const loader = ({params}) => {
   const comicFileName = ComicMap[params.id];
-  return { comicFileName };
+
+  let nextComic = null;
+  let prevComic = null;
+  const comicMapArray = Object.entries(ComicMap);
+  const comicIndex = comicMapArray.findIndex(comic => comic === params.id);
+
+  if (comicIndex + 1 <= comicMapArray.length - 1) {
+    nextComic = comicMapArray[comicIndex + 1];
+  }
+
+  if (comicIndex - 1 > 0) {
+    prevComic = comicMapArray[comicIndex - 1];
+  }
+
+  return { comicFileName, nextComic, prevComic };
 }
 
 const Comic = () => {
