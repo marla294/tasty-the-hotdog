@@ -19,16 +19,18 @@ export const loader = ({params}) => {
 
   let nextComic = null;
   let prevComic = null;
-  const comicMapArray = Object.entries(ComicMap);
+  const comicMapArray = Object.keys(ComicMap);
   const comicIndex = comicMapArray.findIndex(comic => comic === params.id);
 
   if (comicIndex + 1 <= comicMapArray.length - 1) {
     nextComic = comicMapArray[comicIndex + 1];
   }
 
-  if (comicIndex - 1 > 0) {
+  if (comicIndex - 1 > -1) {
     prevComic = comicMapArray[comicIndex - 1];
   }
+
+  console.log({comicFileName, nextComic, prevComic});
 
   return { comicFileName, nextComic, prevComic };
 }

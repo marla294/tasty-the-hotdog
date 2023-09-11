@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link, useLoaderData } from 'react-router-dom';
 import styled from 'styled-components';
 
 const HeaderContainer = styled.div`
@@ -13,10 +13,12 @@ const HeaderContainer = styled.div`
 
 
 const Header = () => {
+  const {nextComic, prevComic} = useLoaderData();
+
   return <HeaderContainer>
-    <Link to={'/comic/09082023'}>Prev</Link>
+    <Link to={prevComic ? `/comic/${prevComic}` : ''}>Prev</Link>
     <h1>Tasty the Hotdog</h1>
-    <Link to={'/comic/09092023'}>Next</Link>
+    <Link to={nextComic ? `/comic/${nextComic}` : ''}>Next</Link>
   </HeaderContainer>
 }
 

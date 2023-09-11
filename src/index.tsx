@@ -15,6 +15,7 @@ const router = createBrowserRouter([
     path: "/",
     element: <Root />,
     errorElement: <ErrorPage />,
+    loader: comicLoader,
     children: [
       {
         path: "about",
