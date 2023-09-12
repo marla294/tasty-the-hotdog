@@ -1,5 +1,6 @@
-import { Link, useLoaderData } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import styled from 'styled-components';
+import { comicLoader } from '../routes/comic';
 
 const HeaderContainer = styled.div`
   width: 100%;
@@ -13,7 +14,8 @@ const HeaderContainer = styled.div`
 
 
 const Header = () => {
-  const {nextComic, prevComic} = useLoaderData();
+  const {id} = useParams();
+  const {nextComic, prevComic} = comicLoader({id});
 
   return <HeaderContainer>
     <div>

@@ -8,14 +8,13 @@ import {
 import Root from './routes/root';
 import ErrorPage from './routes/error-page';
 import About from './routes/about';
-import Comic, {loader as comicLoader} from './routes/comic';
+import Comic, {comicLoader} from './routes/comic';
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Root />,
     errorElement: <ErrorPage />,
-    loader: comicLoader,
     children: [
       {
         path: "about",
@@ -24,7 +23,6 @@ const router = createBrowserRouter([
       {
         path: "comic/:id",
         element: <Comic />,
-        loader: comicLoader
       }
     ]
   },

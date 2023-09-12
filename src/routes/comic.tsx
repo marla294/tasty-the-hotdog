@@ -1,4 +1,4 @@
-import { useLoaderData } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import styled from 'styled-components';
 
 const ComicMap = {'09082023': '09082023.jpeg', '09092023': '09092023.jpg'};
@@ -14,13 +14,13 @@ const StyledComic = styled.img`
   object-fit: cover;
 `;
 
-export const loader = ({params}) => {
-  const comicFileName = ComicMap[params.id];
+export const comicLoader = ({id}) => {
+  const comicFileName = ComicMap[id];
 
   let nextComic = null;
   let prevComic = null;
   const comicMapArray = Object.keys(ComicMap);
-  const comicIndex = comicMapArray.findIndex(comic => comic === params.id);
+  const comicIndex = comicMapArray.findIndex(comic => comic === id);
 
   if (comicIndex + 1 <= comicMapArray.length - 1) {
     nextComic = comicMapArray[comicIndex + 1];
@@ -30,13 +30,12 @@ export const loader = ({params}) => {
     prevComic = comicMapArray[comicIndex - 1];
   }
 
-  console.log({comicFileName, nextComic, prevComic});
-
   return { comicFileName, nextComic, prevComic };
 }
 
 const Comic = () => {
-  const {comicFileName} = useLoaderData();
+  const {id} = useParams();
+  const {comicFileName} = comicLoader({id});
 
   return <Container>
     <StyledComic src={require(`../assets/${comicFileName}`)} />
