@@ -16,9 +16,13 @@ const Header = () => {
   const {nextComic, prevComic} = useLoaderData();
 
   return <HeaderContainer>
-    <Link to={prevComic ? `/comic/${prevComic}` : ''}>Prev</Link>
+    <div>
+      {prevComic && <Link to={prevComic ? `/comic/${prevComic}` : ''}>Prev</Link>}
+    </div>
     <h1>Tasty the Hotdog</h1>
-    <Link to={nextComic ? `/comic/${nextComic}` : ''}>Next</Link>
+    <div>
+      {nextComic && <Link to={nextComic ? `/comic/${nextComic}` : ''}>Next</Link>}
+    </div>
   </HeaderContainer>
 }
 
