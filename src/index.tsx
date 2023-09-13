@@ -8,7 +8,7 @@ import {
 import Root from './routes/root';
 import ErrorPage from './routes/error-page';
 import About from './routes/about';
-import Comic, {comicLoader} from './routes/comic';
+import Comic from './routes/comic';
 
 const router = createBrowserRouter([
   {
@@ -18,7 +18,7 @@ const router = createBrowserRouter([
     children: [
       {
         path: "about",
-        element: <About />
+        element: <About />,
       },
       {
         path: "comic/:id",

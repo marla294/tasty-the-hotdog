@@ -1,5 +1,6 @@
 import { useParams } from 'react-router-dom';
 import styled from 'styled-components';
+import ErrorPage from './error-page';
 
 const ComicMap = {'09082023': '09082023.jpeg', '09092023': '09092023.jpg'};
 
@@ -14,12 +15,16 @@ const StyledComic = styled.img`
   object-fit: cover;
 `;
 
-export const comicLoader = ({id}) => {
-  const comicFileName = ComicMap[id];
+const convertToSortedArray = (map: Object) => Object.keys(map).sort();
 
+export const comicLoader = ({id}: {id: string}) => {
+  const comicFileName = ComicMap[id];
   let nextComic = null;
   let prevComic = null;
-  const comicMapArray = Object.keys(ComicMap);
+
+  if (!comicFileName) return { comicFileName, nextComic, prevComic };
+
+  const comicMapArray = convertToSortedArray(ComicMap);
   const comicIndex = comicMapArray.findIndex(comic => comic === id);
 
   if (comicIndex + 1 <= comicMapArray.length - 1) {
@@ -35,7 +40,11 @@ export const comicLoader = ({id}) => {
 
 const Comic = () => {
   const {id} = useParams();
+  if (!id) return <ErrorPage errorMsg={'Not Found'} />;
+
   const {comicFileName} = comicLoader({id});
+
+  if (!comicFileName) return <ErrorPage errorMsg={'Not Found'} />;
 
   return <Container>
     <StyledComic src={require(`../assets/${comicFileName}`)} />

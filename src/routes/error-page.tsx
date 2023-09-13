@@ -13,14 +13,14 @@ const ContentP = styled.p`
   justify-self: center;
 `;
 
-const ErrorPage = () => {
+const ErrorPage = ({errorMsg}: {errorMsg: string}) => {
   const error: any = useRouteError()
 
   return <ErrorDiv>
 
     <h1>Sorry, an unexpected error has occurred</h1>
     <ContentP>
-      Error message: {error?.statusText || error?.message}
+      Error message: {error?.statusText || error?.message || errorMsg}
     </ContentP>
   </ErrorDiv>
 }
