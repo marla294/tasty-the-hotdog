@@ -4,6 +4,21 @@ import ErrorPage from './error-page';
 
 const ComicMap = {'09082023': '09082023.jpeg', '09092023': '09092023.jpg'};
 
+const MonthMap = {
+  '01': 'January', 
+  '02': 'February', 
+  '03': 'March', 
+  '04': 'April', 
+  '05': 'May',
+  '06': 'June',
+  '07': 'July',
+  '08': 'August',
+  '09': 'September',
+  '10': 'October',
+  '11': 'November',
+  '12': 'December',
+};
+
 const Container = styled.div`
   display: grid;
   justify-content: center;
@@ -38,6 +53,14 @@ export const comicLoader = ({id}: {id: string}) => {
   return { comicFileName, nextComic, prevComic };
 }
 
+const dateCalc = (input: string) => {
+  const inputMonth = input.slice(0, 2);
+  const inputDay = input.slice(2, 4);
+  const inputYear = input.slice(4);
+
+  return `${MonthMap[inputMonth]} ${inputDay}, ${inputYear}`;
+}
+
 const Comic = () => {
   const {id} = useParams();
   if (!id) return <ErrorPage errorMsg={'Not Found'} />;
@@ -48,6 +71,7 @@ const Comic = () => {
 
   return <Container>
     <StyledComic src={require(`../assets/${comicFileName}`)} />
+    <div>{dateCalc(id)}</div>
   </Container>
 }
 
