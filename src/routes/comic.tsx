@@ -2,7 +2,7 @@ import { useParams } from 'react-router-dom';
 import styled from 'styled-components';
 import ErrorPage from './error-page';
 
-const ComicMap = {'09082023': '09082023.jpeg', '09092023': '09092023.jpg'};
+const ComicMap = {'09082023': ['09082023.jpeg'], '09092023': ['09092023.jpg']};
 
 const MonthMap = {
   '01': 'January', 
@@ -33,11 +33,11 @@ const StyledComic = styled.img`
 const convertToSortedArray = (map: Object) => Object.keys(map).sort();
 
 export const comicLoader = ({id}: {id: string}) => {
-  const comicFileName = ComicMap[id];
+  const comics = ComicMap[id];
   let nextComic = null;
   let prevComic = null;
 
-  if (!comicFileName) return { comicFileName, nextComic, prevComic };
+  if (!comics) return { comics: null, nextComic, prevComic };
 
   const comicMapArray = convertToSortedArray(ComicMap);
   const comicIndex = comicMapArray.findIndex(comic => comic === id);
@@ -50,7 +50,7 @@ export const comicLoader = ({id}: {id: string}) => {
     prevComic = comicMapArray[comicIndex - 1];
   }
 
-  return { comicFileName, nextComic, prevComic };
+  return { comics, nextComic, prevComic };
 }
 
 const dateCalc = (input: string) => {
@@ -65,12 +65,11 @@ const Comic = () => {
   const {id} = useParams();
   if (!id) return <ErrorPage errorMsg={'Not Found'} />;
 
-  const {comicFileName} = comicLoader({id});
+  const {comics} = comicLoader({id});
 
-  if (!comicFileName) return <ErrorPage errorMsg={'Not Found'} />;
+  if (!comics) return <ErrorPage errorMsg={'Not Found'} />;
 
-  return <Container>
-    <StyledComic src={require(`../assets/${comicFileName}`)} />
+  return <Container>{comics.map(comic => <StyledComic src={require(`../assets/${comic}`)} />)}
     <div>{dateCalc(id)}</div>
   </Container>
 }
