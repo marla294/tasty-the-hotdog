@@ -32,13 +32,17 @@ const StyledComic = styled.img`
 
 const convertToSortedArray = (map: Object) => Object.keys(map).sort();
 
-export const comicLoader = ({id}: {id: string}) => {
-  const comics = ComicMap[id];
+const dateCalc = (input: string) => {
+  const inputMonth = input.slice(0, 2);
+  const inputDay = input.slice(2, 4);
+  const inputYear = input.slice(4);
+
+  return `${MonthMap[inputMonth]} ${inputDay}, ${inputYear}`;
+}
+
+const getPagination = (id: string) => {
   let nextComic = null;
   let prevComic = null;
-
-  if (!comics) return { comics: null, nextComic, prevComic };
-
   const comicMapArray = convertToSortedArray(ComicMap);
   const comicIndex = comicMapArray.findIndex(comic => comic === id);
 
@@ -50,15 +54,17 @@ export const comicLoader = ({id}: {id: string}) => {
     prevComic = comicMapArray[comicIndex - 1];
   }
 
-  return { comics, nextComic, prevComic };
+  return {nextComic, prevComic};
 }
 
-const dateCalc = (input: string) => {
-  const inputMonth = input.slice(0, 2);
-  const inputDay = input.slice(2, 4);
-  const inputYear = input.slice(4);
+export const comicLoader = ({id}: {id: string}) => {
+  const comics: string[] = ComicMap[id];
 
-  return `${MonthMap[inputMonth]} ${inputDay}, ${inputYear}`;
+  if (!comics) return { comics: null, nextComic: null, prevComic: null };
+
+  const {nextComic, prevComic} = getPagination(id);
+
+  return { comics, nextComic, prevComic };
 }
 
 const Comic = () => {
