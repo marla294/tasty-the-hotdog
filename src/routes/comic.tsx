@@ -30,7 +30,7 @@ const StyledComic = styled.img`
   object-fit: cover;
 `;
 
-const convertToSortedArray = (map: Object) => Object.keys(map).sort();
+const convertKeysToSortedArray = (map: Object) => Object.keys(map).sort();
 
 const dateCalc = (input: string) => {
   const inputMonth = input.slice(0, 2);
@@ -43,7 +43,7 @@ const dateCalc = (input: string) => {
 const getPagination = (id: string) => {
   let nextComic = null;
   let prevComic = null;
-  const comicMapArray = convertToSortedArray(ComicMap);
+  const comicMapArray = convertKeysToSortedArray(ComicMap);
   const comicIndex = comicMapArray.findIndex(comic => comic === id);
 
   if (comicIndex + 1 <= comicMapArray.length - 1) {
@@ -57,7 +57,15 @@ const getPagination = (id: string) => {
   return {nextComic, prevComic};
 }
 
-export const comicLoader = ({id}: {id: string}) => {
+export const allComicLoader = () => {
+  const comics: any = ComicMap;
+
+  return {comics};
+}
+
+export const singleComicLoader = ({id}: {id?: string}) => {
+  if (!id) return { comics: null, nextComic: null, prevComic: null };
+
   const comics: string[] = ComicMap[id];
 
   if (!comics) return { comics: null, nextComic: null, prevComic: null };
@@ -71,11 +79,11 @@ const Comic = () => {
   const {id} = useParams();
   if (!id) return <ErrorPage errorMsg={'Not Found'} />;
 
-  const {comics} = comicLoader({id});
+  const {comics} = singleComicLoader({id});
 
   if (!comics) return <ErrorPage errorMsg={'Not Found'} />;
 
-  return <Container>{comics.map(comic => <StyledComic src={require(`../assets/${comic}`)} />)}
+  return <Container>{comics.map((comic, index) => <StyledComic key={index} src={require(`../assets/${comic}`)} />)}
     <div>{dateCalc(id)}</div>
   </Container>
 }
