@@ -9,13 +9,18 @@ import Root from './routes/root';
 import ErrorPage from './routes/error-page';
 import About from './routes/about';
 import Comic from './routes/comic';
+import Home from './routes/home';
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Root />,
-    errorElement: <ErrorPage />,
+    errorElement: <ErrorPage errorMsg='An error has occurred' />,
     children: [
+      {
+        path: "",
+        element: <Home />,
+      },
       {
         path: "about",
         element: <About />,
