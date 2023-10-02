@@ -32,14 +32,31 @@ const StyledComic = styled.img`
 
 const convertKeysToSortedArray = (map: Object) => Object.keys(map).sort();
 
-const convertEntriesToSortedArray = (map: Object) => Object.entries(map).sort((a, b) => b[0] - a[0]);
+const convertEntriesToSortedArray = (map: Object) => Object.entries(map).sort((a, b) => {
+  const aDate = new Date(getISODate(a[0]));
+  const bDate = new Date(getISODate(b[0]));
 
-const dateCalc = (input: string) => {
-  const inputMonth = input.slice(0, 2);
-  const inputDay = input.slice(2, 4);
-  const inputYear = input.slice(4);
+  return bDate.getTime() - aDate.getTime();
+});
 
-  return `${MonthMap[inputMonth]} ${inputDay}, ${inputYear}`;
+const parseDate = (input: string) => {
+  const month = input.slice(0, 2);
+  const day = input.slice(2, 4);
+  const year = input.slice(4);
+
+  return {month, day, year};
+}
+
+const getDisplayDate = (input: string) => {
+  const {month, day, year} = parseDate(input);
+
+  return `${MonthMap[month]} ${day}, ${year}`;
+}
+
+const getISODate = (input: string) => {
+  const {month, day, year} = parseDate(input);
+
+  return `${year}-${month}-${day}`;
 }
 
 const getPagination = (id: string) => {
@@ -86,7 +103,7 @@ const Comic = () => {
   if (!comics) return <ErrorPage errorMsg={'Not Found'} />;
 
   return <Container>{comics.map((comic, index) => <StyledComic key={index} src={require(`../assets/${comic}`)} />)}
-    <div>{dateCalc(id)}</div>
+    <div>{getDisplayDate(id)}</div>
   </Container>
 }
 
