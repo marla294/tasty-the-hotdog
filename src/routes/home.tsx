@@ -1,9 +1,9 @@
-import { allComicLoader } from "./comic";
+import { firstComicLoader } from "./comic";
 
 
 
 const Home = () => {
-  const {comics} = allComicLoader();
+  const {comics} = firstComicLoader();
 
   console.log({comics});
 

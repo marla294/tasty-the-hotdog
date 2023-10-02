@@ -32,6 +32,8 @@ const StyledComic = styled.img`
 
 const convertKeysToSortedArray = (map: Object) => Object.keys(map).sort();
 
+const convertEntriesToSortedArray = (map: Object) => Object.entries(map).sort((a, b) => b[0] - a[0]);
+
 const dateCalc = (input: string) => {
   const inputMonth = input.slice(0, 2);
   const inputDay = input.slice(2, 4);
@@ -57,8 +59,8 @@ const getPagination = (id: string) => {
   return {nextComic, prevComic};
 }
 
-export const allComicLoader = () => {
-  const comics: any = ComicMap;
+export const firstComicLoader = () => {
+  const comics: any[] = convertEntriesToSortedArray(ComicMap);
 
   return {comics};
 }
