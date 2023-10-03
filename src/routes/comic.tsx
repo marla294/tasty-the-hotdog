@@ -30,7 +30,12 @@ const StyledComic = styled.img`
   object-fit: cover;
 `;
 
-const convertKeysToSortedArray = (map: Object) => Object.keys(map).sort();
+const convertKeysToSortedArray = (map: Object) => Object.keys(map).sort((a, b) => {
+  const aDate = new Date(getISODate(a));
+  const bDate = new Date(getISODate(b));
+
+  return bDate.getTime() - aDate.getTime();
+});
 
 const convertEntriesToSortedArray = (map: Object) => Object.entries(map).sort((a, b) => {
   const aDate = new Date(getISODate(a[0]));
@@ -79,7 +84,11 @@ const getPagination = (id: string) => {
 export const firstComicLoader = () => {
   const comics: any[] = convertEntriesToSortedArray(ComicMap);
 
-  return {comics};
+  const firstComicArray: string[] = comics.map(comic => {
+    return comic[1][0];
+  })
+
+  return {comics: firstComicArray};
 }
 
 export const singleComicLoader = ({id}: {id?: string}) => {

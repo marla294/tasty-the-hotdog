@@ -1,7 +1,5 @@
 import { firstComicLoader } from "./comic";
 
-
-
 const Home = () => {
   const {comics} = firstComicLoader();
 
