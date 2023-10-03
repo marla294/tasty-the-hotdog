@@ -111,7 +111,9 @@ const Comic = () => {
 
   if (!comics) return <ErrorPage errorMsg={'Not Found'} />;
 
-  return <Container>{comics.map((comic, index) => <StyledComic key={index} src={require(`../assets/${comic}`)} />)}
+  return <Container>{comics.map((comic, index) => 
+      <StyledComic key={index} src={require(`../assets/${comic}`)} />
+    )}
     <div>{getDisplayDate(id)}</div>
   </Container>
 }
