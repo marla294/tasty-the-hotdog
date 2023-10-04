@@ -3,7 +3,8 @@ import { firstComicLoader } from "./comic";
 import ErrorPage from "./error-page";
 
 const StyledComic = styled.img`
-  width: 200px;
+  width: 100%;
+  height: 100%;
   object-fit: cover;
 `;
 
