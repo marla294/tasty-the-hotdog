@@ -9,8 +9,7 @@ const StyledComic = styled.img`
 
 const Container = styled.div`
   display: grid;
-  grid-auto-flow: column;
-  grid-template-columns: repeat(5, 200px);
+  grid-template-columns: repeat(auto-fit, 200px);
 `;
 
 const Home = () => {
