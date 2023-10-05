@@ -21,7 +21,9 @@ const Header = () => {
     <div>
       {prevComic && <Link to={prevComic ? `/comic/${prevComic}` : ''}>Prev</Link>}
     </div>
-    <h1>Tasty the Hotdog</h1>
+    <Link to="/">
+      <h1>Tasty the Hotdog</h1>
+    </Link>
     <div>
       {nextComic && <Link to={nextComic ? `/comic/${nextComic}` : ''}>Next</Link>}
     </div>

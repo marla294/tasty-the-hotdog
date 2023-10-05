@@ -1,4 +1,4 @@
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import styled from 'styled-components';
 import ErrorPage from './error-page';
 
@@ -84,8 +84,8 @@ const getPagination = (id: string) => {
 export const firstComicLoader = () => {
   const comics: any[] = convertEntriesToSortedArray(ComicMap);
 
-  const firstComicArray: string[] = comics.map(comic => {
-    return comic[1][0];
+  const firstComicArray: any[] = comics.map(comic => {
+    return {id: comic[0], firstComic: comic[1][0]};
   })
 
   return {comics: firstComicArray};
@@ -112,7 +112,7 @@ const Comic = () => {
   if (!comics) return <ErrorPage errorMsg={'Not Found'} />;
 
   return <Container>{comics.map((comic, index) => 
-      <StyledComic key={index} src={require(`../assets/${comic}`)} />
+        <StyledComic key={index} src={require(`../assets/${comic}`)} />
     )}
     <div>{getDisplayDate(id)}</div>
   </Container>

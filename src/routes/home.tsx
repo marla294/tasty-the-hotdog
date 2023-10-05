@@ -1,6 +1,7 @@
 import { styled } from "styled-components";
 import { firstComicLoader } from "./comic";
 import ErrorPage from "./error-page";
+import { Link } from "react-router-dom";
 
 const StyledComic = styled.img`
   width: 100%;
@@ -19,7 +20,9 @@ const Home = () => {
   if (!comics) return <ErrorPage errorMsg={'Not Found'} />;
 
   return <Container>{comics.map((comic, index) => 
-      <StyledComic key={index} src={require(`../assets/${comic}`)} />
+    <Link to={`/comic/${comic.id}`}>
+      <StyledComic key={index} src={require(`../assets/${comic.firstComic}`)} />
+    </Link>
     )}
   </Container>
 }
