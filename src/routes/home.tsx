@@ -15,16 +15,22 @@ const Container = styled.div`
 `;
 
 const Home = () => {
-  const {comics} = firstComicLoader();
+  const { comics } = firstComicLoader();
 
-  if (!comics) return <ErrorPage errorMsg={'Not Found'} />;
+  if (!comics) return <ErrorPage errorMsg={"Not Found"} />;
 
-  return <Container>{comics.map((comic, index) => 
-    <Link to={`/comic/${comic.id}`}>
-      <StyledComic key={index} src={require(`../assets/${comic.firstComic}`)} />
-    </Link>
-    )}
-  </Container>
-}
+  return (
+    <Container>
+      {comics.map((comic, index) => (
+        <Link to={`/comic/${comic.id}`}>
+          <StyledComic
+            key={index}
+            src={require(`../assets/${comic.firstComic}`)}
+          />
+        </Link>
+      ))}
+    </Container>
+  );
+};
 
 export default Home;

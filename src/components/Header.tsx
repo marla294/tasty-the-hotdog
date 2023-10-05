@@ -1,6 +1,6 @@
-import { Link, useParams } from 'react-router-dom';
-import styled from 'styled-components';
-import { singleComicLoader } from '../routes/comic';
+import { Link, useParams } from "react-router-dom";
+import styled from "styled-components";
+import { singleComicLoader } from "../routes/comic";
 
 const HeaderContainer = styled.div`
   width: 100%;
@@ -12,22 +12,27 @@ const HeaderContainer = styled.div`
   justify-items: center;
 `;
 
-
 const Header = () => {
-  const {id} = useParams();
-  const {nextComic, prevComic} = singleComicLoader({id});
+  const { id } = useParams();
+  const { nextComic, prevComic } = singleComicLoader({ id });
 
-  return <HeaderContainer>
-    <div>
-      {prevComic && <Link to={prevComic ? `/comic/${prevComic}` : ''}>Prev</Link>}
-    </div>
-    <Link to="/">
-      <h1>Tasty the Hotdog</h1>
-    </Link>
-    <div>
-      {nextComic && <Link to={nextComic ? `/comic/${nextComic}` : ''}>Next</Link>}
-    </div>
-  </HeaderContainer>
-}
+  return (
+    <HeaderContainer>
+      <div>
+        {prevComic && (
+          <Link to={prevComic ? `/comic/${prevComic}` : ""}>Prev</Link>
+        )}
+      </div>
+      <Link to="/">
+        <h1>Tasty the Hotdog</h1>
+      </Link>
+      <div>
+        {nextComic && (
+          <Link to={nextComic ? `/comic/${nextComic}` : ""}>Next</Link>
+        )}
+      </div>
+    </HeaderContainer>
+  );
+};
 
 export default Header;
