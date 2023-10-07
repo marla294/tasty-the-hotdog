@@ -3,10 +3,13 @@ import styled from "styled-components";
 import ErrorPage from "./error-page";
 
 const ComicMap = {
-  "09082023": ["09082023.jpeg", "09302023.png"],
-  "09092023": ["09092023.jpg"],
-  "10062023": ["10062023.jpg"],
-  "10072023": ["10072023.jpg"],
+  "01092022": [
+    "01092022-1.jpg",
+    "01092022-2.jpg",
+    "01092022-3.jpg",
+    "01092022-4.jpg",
+    "01092022-5.jpg",
+  ],
 };
 
 const MonthMap = {
@@ -31,7 +34,7 @@ const Container = styled.div`
 `;
 
 const StyledComic = styled.img`
-  width: 400px;
+  width: 90%;
   object-fit: cover;
 `;
 
@@ -120,10 +123,10 @@ const Comic = () => {
 
   return (
     <Container>
+      <div>{getDisplayDate(id)}</div>
       {comics.map((comic, index) => (
         <StyledComic key={index} src={require(`../assets/${comic}`)} />
       ))}
-      <div>{getDisplayDate(id)}</div>
     </Container>
   );
 };
