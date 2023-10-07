@@ -5,6 +5,8 @@ import ErrorPage from "./error-page";
 const ComicMap = {
   "09082023": ["09082023.jpeg", "09302023.png"],
   "09092023": ["09092023.jpg"],
+  "10062023": ["10062023.jpg"],
+  "10072023": ["10072023.jpg"],
 };
 
 const MonthMap = {

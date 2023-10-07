@@ -3,7 +3,7 @@ import { Outlet } from "react-router-dom";
 import styled from "styled-components";
 
 const Container = styled.div`
-  margin-top: 2rem;
+  margin-top: 1rem;
 `;
 
 const Root = () => {

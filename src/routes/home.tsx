@@ -5,13 +5,14 @@ import { Link } from "react-router-dom";
 
 const StyledComic = styled.img`
   width: 100%;
-  height: 100%;
+  height: 200px;
   object-fit: cover;
 `;
 
 const Container = styled.div`
   display: grid;
-  grid-template-columns: repeat(auto-fit, 200px);
+  grid-template-columns: repeat(auto-fit, 225px);
+  justify-content: center;
 `;
 
 const Home = () => {
