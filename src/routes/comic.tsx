@@ -10,6 +10,7 @@ const ComicMap = {
     "01092022-4.jpg",
     "01092022-5.jpg",
   ],
+  "08282023": ["08282023.jpg"],
 };
 
 const MonthMap = {

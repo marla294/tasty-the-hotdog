@@ -5,11 +5,15 @@ import { singleComicLoader } from "../routes/comic";
 const HeaderContainer = styled.div`
   width: 100%;
   height: 5rem;
-  background-color: coral;
+  background-color: white;
   display: grid;
   grid-template-columns: 1fr 5fr 1fr;
   align-items: center;
   justify-items: center;
+`;
+
+const StyledNavLink = styled.img`
+  height: 60px;
 `;
 
 const Header = () => {
@@ -20,7 +24,9 @@ const Header = () => {
     <HeaderContainer>
       <div>
         {prevComic && (
-          <Link to={prevComic ? `/comic/${prevComic}` : ""}>Prev</Link>
+          <Link to={prevComic ? `/comic/${prevComic}` : ""}>
+            <StyledNavLink src={require(`../assets/Prev.jpg`)} />
+          </Link>
         )}
       </div>
       <Link to="/">
@@ -28,7 +34,9 @@ const Header = () => {
       </Link>
       <div>
         {nextComic && (
-          <Link to={nextComic ? `/comic/${nextComic}` : ""}>Next</Link>
+          <Link to={nextComic ? `/comic/${nextComic}` : ""}>
+            <StyledNavLink src={require(`../assets/Next.jpg`)} />
+          </Link>
         )}
       </div>
     </HeaderContainer>
