@@ -16,6 +16,11 @@ const StyledNavLink = styled.img`
   height: 60px;
 `;
 
+const StyledHeaderLink = styled.img`
+  height: 80px;
+  object-fit: cover;
+`;
+
 const Header = () => {
   const { id } = useParams();
   const { nextComic, prevComic } = singleComicLoader({ id });
@@ -30,7 +35,7 @@ const Header = () => {
         )}
       </div>
       <Link to="/">
-        <h1>Tasty the Hotdog</h1>
+        <StyledHeaderLink src={require(`../assets/Header.jpg`)} />
       </Link>
       <div>
         {nextComic && (
