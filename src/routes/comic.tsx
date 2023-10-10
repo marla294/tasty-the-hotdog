@@ -79,7 +79,7 @@ const parseDate = (input: string) => {
   return { month, day, year };
 };
 
-const getDisplayDate = (input: string) => {
+export const getDisplayDate = (input: string) => {
   const { month, day, year } = parseDate(input);
 
   return `${MonthMap[month]} ${day}, ${year}`;

@@ -1,5 +1,5 @@
 import { styled } from "styled-components";
-import { firstComicLoader } from "./comic";
+import { firstComicLoader, getDisplayDate } from "./comic";
 import ErrorPage from "./error-page";
 import { Link } from "react-router-dom";
 
@@ -55,7 +55,7 @@ const Home = () => {
               src={require(`../assets/${comic.firstComic}`)}
             />
             <TitleOverlay className={"title"} key={index}>
-              {comic.id}
+              {getDisplayDate(comic.id)}
             </TitleOverlay>
           </ImageTitleContainer>
         </Link>
