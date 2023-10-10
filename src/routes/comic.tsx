@@ -46,12 +46,13 @@ const MonthMap = {
 
 const Container = styled.div`
   display: grid;
-  justify-content: center;
+  justify-items: center;
   align-content: center;
 `;
 
 const StyledComic = styled.img`
   width: 90%;
+  max-width: 700px;
   object-fit: cover;
 `;
 
