@@ -83,7 +83,13 @@ const parseDate = (input: string) => {
 export const getDisplayDate = (input: string) => {
   const { month, day, year } = parseDate(input);
 
-  return `${MonthMap[month]} ${day}, ${year}`;
+  let outputDay = day;
+
+  if (day[0] === "0") {
+    outputDay = day[1];
+  }
+
+  return `${MonthMap[month]} ${outputDay}, ${year}`;
 };
 
 const getISODate = (input: string) => {
