@@ -48,13 +48,13 @@ const Home = () => {
   return (
     <Container>
       {comics.map((comic, index) => (
-        <Link key={index} to={`/comic/${comic.id}`}>
+        <Link key={`link-${index}`} to={`/comic/${comic.id}`}>
           <ImageTitleContainer>
             <StyledComic
-              key={index}
+              key={`comic-${index}`}
               src={require(`../assets/${comic.firstComic}`)}
             />
-            <TitleOverlay className={"title"} key={index}>
+            <TitleOverlay className={"title"} key={`overlay-${index}`}>
               {getDisplayDate(comic.id)}
             </TitleOverlay>
           </ImageTitleContainer>
