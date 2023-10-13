@@ -2,7 +2,7 @@ import { useParams } from "react-router-dom";
 import styled from "styled-components";
 import ErrorPage from "./error-page";
 
-const ComicMap = {
+const ComicMap: any = {
   "01092022": [
     "01092022-1.jpg",
     "01092022-2.jpg",
@@ -29,7 +29,7 @@ const ComicMap = {
   "08192023": ["08192023.jpg"],
 };
 
-const MonthMap = {
+const MonthMap: any = {
   "01": "January",
   "02": "February",
   "03": "March",
