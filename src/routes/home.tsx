@@ -5,9 +5,11 @@ import { Link } from "react-router-dom";
 
 const StyledComic = styled.img`
   width: 100%;
-  height: 225px;
+  height: 300px;
   object-fit: cover;
   display: block;
+  border: 1px solid black;
+  box-sizing: border-box;
 `;
 
 const TitleOverlay = styled.div`
@@ -36,8 +38,10 @@ const ImageTitleContainer = styled.div`
 
 const Container = styled.div`
   display: grid;
-  grid-template-columns: repeat(auto-fit, 225px);
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-gap: 10px;
   justify-content: center;
+  margin: 0px 10px;
 `;
 
 const Home = () => {
