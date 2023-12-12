@@ -6,14 +6,18 @@ const Container = styled.div`
   margin-top: 1rem;
 `;
 
+const RootParent = styled.div`
+  height: auto;
+`;
+
 const Root = () => {
   return (
-    <>
+    <RootParent>
       <Header />
       <Container>
         <Outlet />
       </Container>
-    </>
+    </RootParent>
   );
 };
 

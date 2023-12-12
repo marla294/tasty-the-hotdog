@@ -10,6 +10,10 @@ const HeaderContainer = styled.div`
   grid-template-columns: 1fr 5fr 1fr;
   align-items: center;
   justify-items: center;
+  border-bottom: 1px solid black;
+  position: sticky;
+  top: 0;
+  z-index: 5000;
 `;
 
 const StyledNavLink = styled.img`
